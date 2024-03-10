@@ -25,10 +25,10 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 
-function luhnCheck(cardNumber) {
+function validateCred(cardNumber) {
     // Convert the card number to an array of digits and reverse it
     const digits = cardNumber.reverse();
-
+  
     // Double every second digit
     for (let i = 1; i < digits.length; i += 2) {
       digits[i] *= 2;
@@ -47,29 +47,28 @@ function luhnCheck(cardNumber) {
   }
   
   // Example usage:
-  const cardNumber = valid1 // Replace with an actual credit card number
-  const isValid = luhnCheck(cardNumber);
+  const cardNumber = valid1; // Replace with an actual credit card number
+  const isValid = validateCred(cardNumber);
   
-  console.log(`Credit card number ${isValid ? 'is' : 'is not'} valid: [${cardNumber}]`);
-
+  console.log(
+    `Credit card number ${isValid ? "is" : "is not"} valid: [${cardNumber}]`
+  );
+  
   function findInvalidCards(cards) {
     const invalidCards = [];
   
     for (const card of cards) {
-      if (!luhnCheck(card)) {
+      if (!validateCred(card)) {
         invalidCards.push(card);
       }
     }
   
     return invalidCards;
   }
-
-
   
   const invalidCards = findInvalidCards(batch);
   console.log("Invalid Cards:", invalidCards);
-
-
+  
   function idInvalidCardCompanies(invalidCardNumbers) {
     const invalidCompanies = [];
   
@@ -106,7 +105,6 @@ function luhnCheck(cardNumber) {
   }
   
   // Example usage:
-
   
   const invalidCompanies = idInvalidCardCompanies(batch);
   console.log("Invalid Companies:", invalidCompanies);
